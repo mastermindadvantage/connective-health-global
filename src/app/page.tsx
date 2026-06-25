@@ -33,19 +33,23 @@ const principles = [
 
 export default async function HomePage() {
   // Fetch featured/published listings for the homepage
-  const { data: featuredListings } = await supabase
-    .from('listings')
-    .select('*')
-    .eq('is_published', true)
-    .in('listing_tier', ['featured', 'verified'])
-    .limit(6)
+  const { data: featuredListings } = supabase
+    ? await supabase
+        .from('listings')
+        .select('*')
+        .eq('is_published', true)
+        .in('listing_tier', ['featured', 'verified'])
+        .limit(6)
+    : { data: null }
 
-  const { data: recentResearch } = await supabase
-    .from('listings')
-    .select('*')
-    .eq('content_type_id', 1)
-    .eq('is_published', true)
-    .limit(3)
+  const { data: recentResearch } = supabase
+    ? await supabase
+        .from('listings')
+        .select('*')
+        .eq('content_type_id', 1)
+        .eq('is_published', true)
+        .limit(3)
+    : { data: null }
 
   return (
     <div className="min-h-screen bg-white">
