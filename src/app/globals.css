@@ -1,19 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-  }
+/* Import the Tailwind v3 color palette for compatibility */
+@theme {
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-background: #ffffff;
+  --color-foreground: #111827;
 }
 
-@layer base {
-  * {
-    @apply border-gray-200;
-  }
-  body {
-    @apply bg-white text-gray-900;
-  }
+* {
+  border-color: var(--color-gray-200, #e5e7eb);
+}
+
+body {
+  background: var(--color-white, #ffffff);
+  color: var(--color-gray-900, #111827);
 }
