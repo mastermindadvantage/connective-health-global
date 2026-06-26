@@ -66,7 +66,7 @@ export default async function HomePage() {
                 <span className="text-sm font-medium text-emerald-700">Evidence-Guided. Clinically Grounded.</span>
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                Your trusted guide to
+                Your guide to
                 <span className="text-emerald-600"> chronic illness</span> evidence and care
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-gray-500 sm:text-xl">
