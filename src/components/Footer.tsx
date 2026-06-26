@@ -2,51 +2,48 @@ import Link from 'next/link'
 
 const footerLinks = {
   Directory: [
-    { name: 'Conditions', href: '/conditions' },
     { name: 'Research Library', href: '/research' },
     { name: 'Supplements', href: '/supplements' },
-    { name: 'Clinics', href: '/clinics' },
-    { name: 'Providers', href: '/providers' },
+    { name: 'Clinics', href: '/providers' },
   ],
   Resources: [
-    { name: 'Evidence Rubric', href: '/about#rubric' },
-    { name: 'For Providers', href: '/for-providers' },
     { name: 'Newsletter', href: '/newsletter' },
     { name: 'About Us', href: '/about' },
+    { name: 'Evidence Rubric', href: '/about#rubric' },
   ],
   Support: [
     { name: 'Contact', href: '/about#contact' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Use', href: '/terms' },
-    { name: 'Accessibility', href: '/accessibility' },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-100 bg-gray-50">
+    <footer style={{ background: '#0f3b45', borderTop: '2px solid #0f3b45' }}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600">
-                <span className="text-sm font-bold text-white">C</span>
-              </div>
-              <span className="text-sm font-semibold text-gray-900">Connective Health Global</span>
+            <Link href="/" className="font-serif text-lg font-semibold" style={{ color: '#ffffff' }}>
+              Connected Health <span style={{ color: '#f2d9b3' }}>Global</span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-gray-500">
-              Evidence-guided chronic illness navigation. Trust first. Revenue follows.
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Evidence. Community. Direction.
             </p>
           </div>
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-semibold text-gray-900">{title}</h3>
+              <h3 className="text-sm font-semibold" style={{ color: '#f2d9b3' }}>{title}</h3>
               <ul className="mt-3 space-y-2">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-gray-500 transition-colors hover:text-emerald-600">
+                    <Link
+                      href={link.href}
+                      className="text-sm transition-colors"
+                      style={{ color: 'rgba(255,255,255,0.6)' }}
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -56,11 +53,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-gray-200 pt-8">
-          <p className="text-center text-xs text-gray-400">
-            &copy; {new Date().getFullYear()} Connective Health Global. All rights reserved.
+        <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+          <p className="text-center text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            &copy; {new Date().getFullYear()} Connected Health Global. All rights reserved.
           </p>
-          <p className="mt-1 text-center text-xs text-gray-400">
+          <p className="mt-1 text-center text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
             Always consult your healthcare provider before starting any new treatment or supplement.
           </p>
         </div>

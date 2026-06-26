@@ -52,54 +52,51 @@ export default async function HomePage() {
     : { data: null }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
       <Header />
 
       <main>
-        {/* Serene Hero Section - inspired by V0 template */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100/40 via-transparent to-transparent" />
-          <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                <span className="text-sm font-medium text-emerald-700">Evidence-Guided. Clinically Grounded.</span>
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                Your guide to
-                <span className="text-emerald-600"> chronic illness</span> evidence and care
-              </h1>
-              <p className="mt-6 text-lg leading-relaxed text-gray-500 sm:text-xl">
-                A structured, evidence-graded directory of clinical research, treatments, 
-                supplements, clinics, and providers. Built on trust. Verified by evidence.
-              </p>
-              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Link
-                  href="/conditions"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-emerald-600 px-8 text-sm font-semibold text-white shadow-lg shadow-emerald-200 transition-all hover:bg-emerald-700 sm:w-auto"
-                >
-                  Explore Conditions
-                </Link>
-                <Link
-                  href="/research"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-gray-200 bg-white px-8 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 sm:w-auto"
-                >
-                  Browse Research
-                </Link>
-              </div>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #f4f0e8, #fdfaf5)' }}>
+          <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-16 text-center sm:pb-28 sm:pt-24 lg:px-8">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #f2d9b3', background: '#f9f6ef' }}>
+              <span className="h-2 w-2 rounded-full" style={{ background: '#c77d2a' }} />
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c77d2a', fontSize: '0.7rem' }}>Evidence-Guided. Clinically Grounded.</span>
+            </div>
+            <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#0f3b45' }}>
+              Your guide to
+              <span className="block" style={{ color: '#1b5e6b' }}> chronic illness evidence and care</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#3a3f4b' }}>
+              A structured, evidence-graded directory of clinical research, treatments, 
+              supplements, clinics, and providers. Every listing rated by our published evidence rubric.
+            </p>
+            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/research"
+                className="btn-primary"
+              >
+                Browse Research
+              </Link>
+              <Link
+                href="/supplements"
+                className="btn-secondary"
+              >
+                Supplement Directory
+              </Link>
             </div>
           </div>
         </section>
 
         {/* Principles */}
-        <section className="border-y border-gray-100 bg-gray-50/50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="grid gap-8 md:grid-cols-3">
+        <section className="py-16" style={{ background: '#f4f0e8' }}>
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-6 md:grid-cols-3">
               {principles.map((principle) => (
-                <div key={principle.title} className="rounded-xl bg-white p-6 shadow-sm">
+                <div key={principle.title} className="card">
                   <span className="text-2xl">{principle.icon}</span>
-                  <h3 className="mt-3 text-base font-semibold text-gray-900">{principle.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{principle.description}</p>
+                  <h3 className="mt-3 text-base font-semibold" style={{ color: '#1a1d23' }}>{principle.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: '#3a3f4b' }}>{principle.description}</p>
                 </div>
               ))}
             </div>
@@ -107,24 +104,24 @@ export default async function HomePage() {
         </section>
 
         {/* Condition Categories */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Browse by Condition</h2>
-            <p className="mt-3 text-gray-500">Evidence-graded information across the most common chronic illness categories.</p>
+            <h2 className="font-serif text-2xl font-medium sm:text-3xl" style={{ color: '#0f3b45' }}>Browse by Condition</h2>
+            <p className="mt-3" style={{ color: '#3a3f4b' }}>Evidence-graded information across the most common chronic illness categories.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((cat) => (
+            {categories.map((cat: any) => (
               <Link
                 key={cat.slug}
                 href={`/conditions/${cat.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-emerald-200 hover:shadow-sm"
+                className="card group flex items-center gap-4 p-5"
               >
                 <span className="text-2xl">{cat.icon}</span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">{cat.name}</h3>
-                  <p className="text-xs text-gray-400">{cat.count} listings</p>
+                  <h3 className="text-sm font-semibold group-hover" style={{ color: '#1a1d23' }}>{cat.name}</h3>
+                  <p className="text-xs" style={{ color: '#8a8275' }}>{cat.count} listings</p>
                 </div>
-                <span className="text-gray-300 group-hover:text-emerald-500">&rarr;</span>
+                <span style={{ color: '#c77d2a' }}>&rarr;</span>
               </Link>
             ))}
           </div>
@@ -153,15 +150,16 @@ export default async function HomePage() {
         )}
 
         {/* CTA */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 px-8 py-12 text-center text-white shadow-xl sm:px-16">
-            <h2 className="text-2xl font-bold sm:text-3xl">Stay informed</h2>
-            <p className="mx-auto mt-3 max-w-lg text-emerald-100">
+        <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="rounded-lg px-8 py-12 text-center sm:px-16" style={{ background: '#0f3b45' }}>
+            <h2 className="font-serif text-2xl font-medium text-white sm:text-3xl">Stay informed</h2>
+            <p className="mx-auto mt-3 max-w-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
               Get the latest research updates, evidence changes, and new provider listings delivered to your inbox.
             </p>
             <Link
               href="/newsletter"
-              className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-white px-8 text-sm font-semibold text-emerald-700 shadow-lg transition-all hover:bg-emerald-50"
+              className="btn-primary mt-8 inline-flex"
+              style={{ background: '#c77d2a' }}
             >
               Subscribe to the Newsletter
             </Link>
