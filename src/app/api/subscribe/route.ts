@@ -9,6 +9,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 })
     }
 
+    if (!supabase) {
+      return NextResponse.json({ message: 'Subscriptions not available - database not configured' })
+    }
+
     const { error } = await supabase
       .from('subscribers')
       .insert({ email, source: 'website' })
