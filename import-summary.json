@@ -1,0 +1,36 @@
+{
+  "import_date": "2026-06-27",
+  "total_listings_before": 34,
+  "total_listings_after": 324,
+  "new_enrichment_records": 290,
+  "content_type_breakdown_before": {
+    "3": 15,
+    "1": 8,
+    "4": 4,
+    "5": 4,
+    "2": 3
+  },
+  "content_type_breakdown_after": {
+    "3": 49,
+    "1": 88,
+    "4": 34,
+    "5": 7,
+    "2": 3,
+    "7": 80,
+    "8": 63
+  },
+  "source_files": [
+    "clinical_trials.json (80 trials)",
+    "research_studies.json (80 studies)",
+    "supplements_curated.json (34 curated supplements)",
+    "clinicians.json (33 clinicians/clinics)",
+    "supplements.json (64 supplement articles)"
+  ],
+  "total_records_in_source": {
+    "clinical_trials": 80,
+    "research_studies": 80,
+    "supplements_curated": 34,
+    "clinicians": 33,
+    "supplements": 64
+  }
+}
