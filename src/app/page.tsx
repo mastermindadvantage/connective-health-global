@@ -83,48 +83,84 @@ export default async function HomePage() {
       <Header />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #eae5da, #f5f1ec)' }}>
-          <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-16 text-center sm:pb-28 sm:pt-24 lg:px-8">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #eae5da', background: '#f5f1ec' }}>
-              
-              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#5c4b3a', fontSize: '0.7rem' }}>A Global Directory to Navigate Chronic Illness</span>
+        {/* Hero Section — full-width cinematic */}
+        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden" style={{ background: '#eae5da' }}>
+          {/* Background gradient: warm ivory → soft sage, like dawn mist */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f5f1ec 0%, #d4ddd6 30%, #a8b8a2 60%, #8a9e84 100%)' }} />
+          
+          {/* Soft light beam effect — sweeping across from left */}
+          <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse 120% 60% at 10% 50%, rgba(216,181,106,0.5) 0%, transparent 70%)' }} />
+          <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(ellipse 80% 40% at 30% 40%, rgba(248,246,241,0.8) 0%, transparent 60%)' }} />
+          
+          {/* Subtle connection lines (suggesting global reach) */}
+          <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 20% 30%, rgba(193,164,130,0.4) 0%, transparent 40%), radial-gradient(circle at 60% 70%, rgba(193,164,130,0.3) 0%, transparent 35%), radial-gradient(circle at 80% 20%, rgba(193,164,130,0.2) 0%, transparent 30%)' }} />
+          
+          {/* Content */}
+          <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:py-32 lg:px-8">
+            {/* Badge */}
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full px-5 py-2" style={{ background: 'rgba(248,246,241,0.75)', backdropFilter: 'blur(4px)', border: '1px solid rgba(193,164,130,0.3)' }}>
+              <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#5c4b3a' }}>A Global Directory to Navigate Chronic Illness</span>
             </div>
-            <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#343434' }}>
-              Clinical research, treatments, clinics,
-              <span className="block" style={{ color: '#756b62' }}> providers, and supplements</span>
+
+            {/* Headline */}
+            <h1 className="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#29382f' }}>
+              Navigate Complex Chronic Illness
+              <span className="block mt-2" style={{ color: '#3e5b4f' }}> with Confidence</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#756b62' }}>
-              
+
+            {/* Subheadline */}
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl" style={{ color: '#5c4b3a' }}>
+              Connecting evidence, experts, care and community — all in one place.
             </p>
+
+            {/* Four condition buttons */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/conditions/mecfs"
-                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
-                style={{ background: '#3e5b4f', color: '#ffffff' }}
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                style={{ background: '#3e5b4f', color: '#f8f6f1' }}
               >
                 ME/CFS
               </Link>
               <Link
                 href="/conditions/long-covid"
-                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
-                style={{ background: '#3e5b4f', color: '#ffffff' }}
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                style={{ background: '#3e5b4f', color: '#f8f6f1' }}
               >
                 Long COVID
               </Link>
               <Link
                 href="/conditions/pots"
-                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
-                style={{ background: '#3e5b4f', color: '#ffffff' }}
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                style={{ background: '#3e5b4f', color: '#f8f6f1' }}
               >
                 POTS
               </Link>
               <Link
                 href="/conditions/fibromyalgia"
-                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
-                style={{ background: '#3e5b4f', color: '#ffffff' }}
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                style={{ background: '#3e5b4f', color: '#f8f6f1' }}
               >
                 Fibromyalgia
+              </Link>
+            </div>
+
+            {/* Two CTA buttons */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/research"
+                className="rounded-lg px-8 py-3.5 text-base font-semibold transition-all duration-200 hover:shadow-lg"
+                style={{ background: '#c1a482', color: '#29382f' }}
+              >
+                Explore the Directory
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-lg px-8 py-3.5 text-base font-semibold transition-all duration-200 hover:shadow-lg"
+                style={{ background: 'rgba(248,246,241,0.75)', color: '#3e5b4f', border: '1px solid #c1a482' }}
+              >
+                Start Your Journey
               </Link>
             </div>
           </div>
