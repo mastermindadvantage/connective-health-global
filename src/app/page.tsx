@@ -10,24 +10,51 @@ const categories = [
   { name: 'POTS', slug: 'pots', count: '22', icon: '💓' },
   { name: 'Fibromyalgia', slug: 'fibromyalgia', count: '19', icon: '🤕' },
   { name: 'MCAS', slug: 'mcas', count: '15', icon: '🔬' },
+  { name: 'EDS/HSD', slug: 'eds-hsd', count: '12', icon: '🦴' },
   { name: 'Autoimmune', slug: 'autoimmune', count: '31', icon: '🛡️' },
+  { name: 'Lyme Disease', slug: 'lyme-disease', count: '8', icon: '🪲' },
+  { name: 'General', slug: 'general-chronic-illness', count: '20', icon: '📋' },
+]
+
+const steps = [
+  {
+    title: '1. Search or Browse',
+    description: 'Find what you need by condition, treatment type, or keyword. Our directory covers research, treatments, supplements, clinics, and providers.',
+    icon: '🔍',
+  },
+  {
+    title: '2. Check the Evidence',
+    description: 'Every listing has an evidence tier — Clinical Trial, Multiple Studies, Patient Reports, Emerging, or Listing Only. Click any tier badge to learn what it means.',
+    icon: '📊',
+  },
+  {
+    title: '3. Read & Decide',
+    description: 'Review original sources, compare options, and discuss with your healthcare provider. We link directly to the evidence so you can verify it yourself.',
+    icon: '📖',
+  },
+  {
+    title: '4. Stay Updated',
+    description: 'Subscribe to the newsletter for new research, evidence changes, and provider additions. Never miss an update that matters to your health.',
+    icon: '📬',
+  },
 ]
 
 const principles = [
   {
-    title: 'Evidence First',
-    description: 'Every listing is rated using our published evidence rubric. Nothing published without a source.',
+    title: 'Research Authority',
+    description: 'We prioritise peer-reviewed research and clinical evidence. Every listing above "Listing Only" links to its original source so you can verify it yourself.',
     icon: '🔬',
   },
   {
-    title: 'Clinically Grounded',
-    description: 'Research and clinical trials are the foundation. Treatments and providers build on that evidence.',
-    icon: '📋',
+    title: 'The Evidence Gate',
+    description: 'Only Clinical Trial or Multiple Studies ratings may carry affiliate links. Revenue follows evidence — not the other way around.',
+
+    icon: '⛓️',
   },
   {
-    title: 'Trust That Compounds',
-    description: 'Every evidence rating change is timestamped on a public ledger. Verifiable integrity, not claims.',
-    icon: '⛓️',
+    title: 'Revenue = Oxygen, Not Mission',
+    description: 'Affiliate income funds operations and keeps the directory free. It never determines what gets listed or how it\'s rated.',
+    icon: '💚',
   },
 ]
 
@@ -46,30 +73,31 @@ export default async function HomePage() {
     ? await supabase
         .from('listings')
         .select('*')
-        .eq('content_type_id', 1)
+        .in('content_type_id', [1, 8])
         .eq('is_published', true)
         .limit(3)
     : { data: null }
 
   return (
-    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
+    <div className="min-h-screen" style={{ background: '#f5f1ec' }}>
       <Header />
 
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #f4f0e8, #fdfaf5)' }}>
+        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #eae5da, #f5f1ec)' }}>
           <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-16 text-center sm:pb-28 sm:pt-24 lg:px-8">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #f2d9b3', background: '#f9f6ef' }}>
-              <span className="h-2 w-2 rounded-full" style={{ background: '#c77d2a' }} />
-              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c77d2a', fontSize: '0.7rem' }}>Evidence-Guided. Clinically Grounded.</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #eae5da', background: '#f5f1ec' }}>
+              <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c1a482', fontSize: '0.7rem' }}>Research First. Trust Always.</span>
             </div>
-            <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#0f3b45' }}>
-              Your guide to
-              <span className="block" style={{ color: '#1b5e6b' }}> chronic illness evidence and care</span>
+            <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#343434' }}>
+              Evidence-guided chronic
+              <span className="block" style={{ color: '#756b62' }}> illness navigation</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#3a3f4b' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#756b62' }}>
               A structured, evidence-graded directory of clinical research, treatments, 
-              supplements, clinics, and providers. Every listing rated by our published evidence rubric.
+              supplements, clinics, and providers. Every listing rated by our published 
+              evidence rubric — so you know exactly what the science says.
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
@@ -79,24 +107,59 @@ export default async function HomePage() {
                 Browse Research
               </Link>
               <Link
-                href="/supplements"
+                href="/conditions"
                 className="btn-secondary"
               >
-                Supplement Directory
+                Browse by Condition
+              </Link>
+              <Link
+                href="/newsletter"
+                className="btn-secondary"
+                style={{ borderColor: '#c1a482', color: '#c1a482' }}
+              >
+                Subscribe Free
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Principles */}
-        <section className="py-16" style={{ background: '#f4f0e8' }}>
+        {/* How It Works */}
+        <section className="py-16" style={{ background: '#ffffff' }}>
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="font-serif text-2xl font-medium sm:text-3xl" style={{ color: '#756b62' }}>
+                How It Works
+              </h2>
+              <p className="mt-3" style={{ color: '#756b62' }}>
+                From search to informed decision — in four steps.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-4">
+              {steps.map((step) => (
+                <div key={step.title} className="card text-center">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full text-xl" style={{ background: '#eae5da' }}>
+                    {step.icon}
+                  </span>
+                  <h3 className="mt-3 text-base font-semibold" style={{ color: '#343434' }}>{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: '#756b62' }}>{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Principles */}
+        <section className="py-16" style={{ background: '#eae5da' }}>
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <h2 className="mb-10 text-center font-serif text-2xl font-medium sm:text-3xl" style={{ color: '#756b62' }}>
+              Our Principles
+            </h2>
             <div className="grid gap-6 md:grid-cols-3">
               {principles.map((principle) => (
                 <div key={principle.title} className="card">
                   <span className="text-2xl">{principle.icon}</span>
-                  <h3 className="mt-3 text-base font-semibold" style={{ color: '#1a1d23' }}>{principle.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: '#3a3f4b' }}>{principle.description}</p>
+                  <h3 className="mt-3 text-base font-semibold" style={{ color: '#343434' }}>{principle.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: '#756b62' }}>{principle.description}</p>
                 </div>
               ))}
             </div>
@@ -106,8 +169,8 @@ export default async function HomePage() {
         {/* Condition Categories */}
         <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <h2 className="font-serif text-2xl font-medium sm:text-3xl" style={{ color: '#0f3b45' }}>Browse by Condition</h2>
-            <p className="mt-3" style={{ color: '#3a3f4b' }}>Evidence-graded information across the most common chronic illness categories.</p>
+            <h2 className="font-serif text-2xl font-medium sm:text-3xl" style={{ color: '#756b62' }}>Browse by Condition</h2>
+            <p className="mt-3" style={{ color: '#756b62' }}>Evidence-graded information across the most common chronic illness categories.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat: any) => (
@@ -118,25 +181,30 @@ export default async function HomePage() {
               >
                 <span className="text-2xl">{cat.icon}</span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-sm font-semibold group-hover" style={{ color: '#1a1d23' }}>{cat.name}</h3>
-                  <p className="text-xs" style={{ color: '#8a8275' }}>{cat.count} listings</p>
+                  <h3 className="text-sm font-semibold group-hover" style={{ color: '#343434' }}>{cat.name}</h3>
+                  <p className="text-xs" style={{ color: '#756b62' }}>{cat.count} listings</p>
                 </div>
-                <span style={{ color: '#c77d2a' }}>&rarr;</span>
+                <span style={{ color: '#c1a482' }}>&rarr;</span>
               </Link>
             ))}
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/conditions" className="text-sm font-medium" style={{ color: '#756b62' }}>
+              View all conditions &rarr;
+            </Link>
           </div>
         </section>
 
         {/* Recent Research */}
         {recentResearch && recentResearch.length > 0 && (
-          <section className="bg-gray-50/50 border-y border-gray-100">
-            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <section className="py-16" style={{ background: '#eae5da' }}>
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="mb-8 flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Recent Research</h2>
-                  <p className="mt-2 text-gray-500">Latest studies and clinical evidence added to the directory.</p>
+                  <h2 className="font-serif text-2xl font-medium" style={{ color: '#756b62' }}>Recent Research</h2>
+                  <p className="mt-2" style={{ color: '#756b62' }}>Latest studies and clinical evidence added to the directory.</p>
                 </div>
-                <Link href="/research" className="text-sm font-medium text-emerald-600 hover:text-emerald-700">
+                <Link href="/research" className="text-sm font-medium" style={{ color: '#756b62' }}>
                   View all &rarr;
                 </Link>
               </div>
@@ -149,20 +217,34 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* CTA */}
+        {/* Newsletter CTA */}
         <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-lg px-8 py-12 text-center sm:px-16" style={{ background: '#0f3b45' }}>
-            <h2 className="font-serif text-2xl font-medium text-white sm:text-3xl">Stay informed</h2>
-            <p className="mx-auto mt-3 max-w-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
-              Get the latest research updates, evidence changes, and new provider listings delivered to your inbox.
+          <div className="rounded-lg px-8 py-12 text-center sm:px-16" style={{ background: 'linear-gradient(135deg, #343434, #756b62)' }}>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1" style={{ background: 'rgba(255,255,255,0.15)' }}>
+              <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.8)' }}>Day One — Start Today</span>
+            </div>
+            <h2 className="font-serif text-2xl font-medium text-white sm:text-3xl">Stay informed, for free</h2>
+            <p className="mx-auto mt-3 max-w-lg" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              Get weekly research updates, evidence changes, and new provider listings 
+              delivered to your inbox. No spam, just evidence.
             </p>
-            <Link
-              href="/newsletter"
-              className="btn-primary mt-8 inline-flex"
-              style={{ background: '#c77d2a' }}
-            >
-              Subscribe to the Newsletter
-            </Link>
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/newsletter"
+                className="btn-primary inline-flex"
+                style={{ background: '#c1a482', color: '#343434' }}
+              >
+                Subscribe to the Newsletter
+              </Link>
+              <Link
+                href="/about#rubric"
+                className="rounded px-5 py-2.5 text-sm font-semibold transition-colors"
+                style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff' }}
+              >
+                Our Evidence Rubric
+              </Link>
+            </div>
           </div>
         </section>
       </main>

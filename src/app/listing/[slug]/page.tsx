@@ -4,12 +4,37 @@ import { supabase } from '@/lib/supabase'
 import { EvidenceBadge } from '@/components/EvidenceBadge'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import type { Listing } from '@/lib/types'
 
-export default async function ListingPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const { data: listing } = await supabase
+    .from('listings')
+    .select('title, description, summary')
+    .eq('slug', slug)
+    .single()
+
+  if (!listing) {
+    return { title: 'Listing Not Found' }
+  }
+
+  return {
+    title: listing.title,
+    description: listing.summary || listing.description || `Evidence-graded listing for ${listing.title} on Connective Health Global.`,
+  }
+}
+
+export default async function ListingPage({ params }: PageProps) {
+  const { slug } = await params
   const { data: listing } = await supabase
     .from('listings')
     .select('*')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single()
 
   if (!listing) {
@@ -17,11 +42,11 @@ export default async function ListingPage({ params }: { params: { slug: string }
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
       <Header />
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Back link */}
-        <Link href="/" className="text-sm text-gray-500 hover:text-emerald-600">&larr; Back to directory</Link>
+        <Link href="/" className="text-sm transition-colors" style={{ color: '#1b5e6b' }}>&larr; Back to directory</Link>
 
         <div className="mt-6">
           {/* Header */}
@@ -32,40 +57,41 @@ export default async function ListingPage({ params }: { params: { slug: string }
                   <EvidenceBadge tierId={listing.evidence_tier_id} size="md" />
                 )}
               </div>
-              <h1 className="mt-3 text-3xl font-bold text-gray-900">{listing.title}</h1>
+              <h1 className="mt-3 font-serif text-3xl font-medium sm:text-4xl" style={{ color: '#0f3b45' }}>{listing.title}</h1>
             </div>
           </div>
 
           {/* Summary */}
           {listing.summary && (
-            <p className="mt-4 text-lg text-gray-600">{listing.summary}</p>
+            <p className="mt-4 text-lg leading-relaxed" style={{ color: '#3a3f4b' }}>{listing.summary}</p>
           )}
 
           {/* Description */}
           {listing.description && (
             <div className="mt-8">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">About</h2>
-              <p className="mt-2 leading-relaxed text-gray-700">{listing.description}</p>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#8a8275' }}>About</h2>
+              <p className="mt-2 leading-relaxed" style={{ color: '#3a3f4b' }}>{listing.description}</p>
             </div>
           )}
 
           {/* Evidence notes */}
           {listing.evidence_notes && (
-            <div className="mt-8 rounded-xl bg-emerald-50 p-6">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Evidence Notes</h2>
-              <p className="mt-2 text-emerald-800">{listing.evidence_notes}</p>
+            <div className="mt-8 rounded-lg p-6" style={{ background: '#d1e6e9' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#0f3b45' }}>Evidence Notes</h2>
+              <p className="mt-2" style={{ color: '#1a1d23' }}>{listing.evidence_notes}</p>
             </div>
           )}
 
           {/* Evidence sources */}
           {listing.evidence_sources && listing.evidence_sources.length > 0 && (
             <div className="mt-8">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Sources</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#8a8275' }}>Sources</h2>
               <ul className="mt-3 space-y-2">
                 {listing.evidence_sources.map((source: any, i: number) => (
                   <li key={i}>
                     <a href={source.url} target="_blank" rel="noopener noreferrer" 
-                       className="text-sm text-emerald-600 hover:text-emerald-700 hover:underline">
+                       className="text-sm transition-colors"
+                       style={{ color: '#1b5e6b' }}>
                       {source.title}
                     </a>
                   </li>
@@ -76,14 +102,15 @@ export default async function ListingPage({ params }: { params: { slug: string }
 
           {/* Contact info */}
           {(listing.phone || listing.email || listing.website) && (
-            <div className="mt-8 border-t border-gray-100 pt-8">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Contact</h2>
+            <div className="mt-8 pt-8" style={{ borderTop: '1px solid #d6cebf' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: '#8a8275' }}>Contact</h2>
               <div className="mt-3 space-y-2">
-                {listing.phone && <p className="text-sm text-gray-700">Phone: {listing.phone}</p>}
-                {listing.email && <p className="text-sm text-gray-700">Email: {listing.email}</p>}
+                {listing.phone && <p className="text-sm" style={{ color: '#3a3f4b' }}>Phone: {listing.phone}</p>}
+                {listing.email && <p className="text-sm" style={{ color: '#3a3f4b' }}>Email: {listing.email}</p>}
                 {listing.website && (
                   <a href={listing.website} target="_blank" rel="noopener noreferrer"
-                     className="text-sm text-emerald-600 hover:text-emerald-700 hover:underline">
+                     className="text-sm font-medium transition-colors"
+                     style={{ color: '#1b5e6b' }}>
                     Visit website &rarr;
                   </a>
                 )}
@@ -93,11 +120,15 @@ export default async function ListingPage({ params }: { params: { slug: string }
 
           {/* Affiliate link */}
           {listing.affiliate_url && (
-            <div className="mt-8 border-t border-gray-100 pt-8">
+            <div className="mt-8 pt-8" style={{ borderTop: '1px solid #d6cebf' }}>
               <a href={listing.affiliate_url} target="_blank" rel="noopener noreferrer"
-                 className="inline-flex items-center gap-2 rounded-xl bg-amber-50 px-6 py-3 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-100">
+                 className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-colors"
+                 style={{ background: '#f2d9b3', color: '#c77d2a' }}>
                 Check price on {listing.affiliate_network || 'supplier'} &rarr;
               </a>
+              <p className="mt-2 text-xs" style={{ color: '#8a8275' }}>
+                We may earn a commission. This does not affect our evidence rating.
+              </p>
             </div>
           )}
         </div>

@@ -3,8 +3,10 @@ import Link from 'next/link'
 const footerLinks = {
   Directory: [
     { name: 'Research Library', href: '/research' },
+    { name: 'Treatments', href: '/treatments' },
     { name: 'Supplements', href: '/supplements' },
-    { name: 'Clinics', href: '/providers' },
+    { name: 'Clinics', href: '/clinics' },
+    { name: 'Providers', href: '/providers' },
   ],
   Resources: [
     { name: 'Newsletter', href: '/newsletter' },
@@ -20,13 +22,13 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer style={{ background: '#0f3b45', borderTop: '2px solid #0f3b45' }}>
+    <footer style={{ background: '#343434', borderTop: '2px solid #343434' }}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-serif text-lg font-semibold" style={{ color: '#ffffff' }}>
-              Connected Health <span style={{ color: '#f2d9b3' }}>Global</span>
+              Connective Health <span style={{ color: '#c1a482' }}>Global</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Evidence. Community. Direction.
@@ -35,7 +37,7 @@ export function Footer() {
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-semibold" style={{ color: '#f2d9b3' }}>{title}</h3>
+              <h3 className="text-sm font-semibold" style={{ color: '#c1a482' }}>{title}</h3>
               <ul className="mt-3 space-y-2">
                 {links.map((link) => (
                   <li key={link.name}>
@@ -55,7 +57,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
           <p className="text-center text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            &copy; {new Date().getFullYear()} Connected Health Global. All rights reserved.
+            &copy; {new Date().getFullYear()} Connective Health Global. All rights reserved.
           </p>
           <p className="mt-1 text-center text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
             Always consult your healthcare provider before starting any new treatment or supplement.

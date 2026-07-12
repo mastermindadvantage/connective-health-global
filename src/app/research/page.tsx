@@ -2,10 +2,12 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ListingCard } from '@/components/ListingCard'
 import { supabase } from '@/lib/supabase'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Research Library',
-  description: 'Curated research studies and clinical evidence for chronic illness conditions. PubMed-indexed and evidence-graded.',
+  description: 'Curated research studies and clinical evidence for chronic illness conditions. PubMed-indexed, evidence-graded, and organised by condition category. ME/CFS, Long COVID, POTS, and more.',
+  keywords: ['chronic illness research', 'ME/CFS research', 'Long COVID studies', 'POTS clinical trials', 'fibromyalgia research', 'PubMed', 'evidence-graded'],
 }
 
 export default async function ResearchPage() {
@@ -17,14 +19,16 @@ export default async function ResearchPage() {
     .order('created_at', { ascending: false })
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
       <Header />
       <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <h1 className="text-3xl font-bold text-gray-900">Research Library</h1>
-          <p className="mt-3 max-w-2xl text-gray-500">
+          <h1 className="font-serif text-3xl font-medium sm:text-4xl" style={{ color: '#0f3b45' }}>
+            Research Library
+          </h1>
+          <p className="mt-3 max-w-2xl" style={{ color: '#3a3f4b' }}>
             Curated research studies and clinical evidence organised by condition. 
-            Every entry links to its original source.
+            Every entry links to its original source and is rated using our published evidence rubric.
           </p>
         </div>
 
@@ -35,8 +39,8 @@ export default async function ResearchPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-xl border border-dashed border-gray-200 p-12 text-center">
-            <p className="text-gray-500">Connect your Supabase database and run the seed data.</p>
+          <div className="rounded-xl border border-dashed py-16 text-center" style={{ borderColor: '#d6cebf' }}>
+            <p style={{ color: '#8a8275' }}>Connect your Supabase database and run the seed data.</p>
           </div>
         )}
       </main>
