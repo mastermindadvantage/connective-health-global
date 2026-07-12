@@ -8,10 +8,9 @@ import { useRouter } from 'next/navigation'
 const navigation = [
   { name: 'Research', href: '/research' },
   { name: 'Treatments', href: '/treatments' },
-  { name: 'Supplements', href: '/supplements' },
   { name: 'Clinics', href: '/clinics' },
   { name: 'Providers', href: '/providers' },
-  { name: 'Conditions', href: '/conditions' },
+  { name: 'Supplements', href: '/supplements' },
   { name: 'About', href: '/about' },
 ]
 
@@ -31,13 +30,13 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full" style={{ background: '#343434' }}>
+    <header className="sticky top-0 z-50 w-full" style={{ background: '#a8b8a2' }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <span className="font-serif text-lg font-semibold text-white">
-              Connective Health <span style={{ color: '#c1a482' }}>Global</span>
+            <span className="font-serif text-lg font-semibold" style={{ color: '#29382f' }}>
+              Connective Health <span style={{ color: '#3e5b4f' }}>Global</span>
             </span>
           </Link>
 
@@ -48,9 +47,9 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className="rounded px-3 py-1.5 text-sm font-medium transition-colors"
-                style={{ color: 'rgba(255,255,255,0.75)' }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#c1a482' }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.75)' }}
+                style={{ color: '#3e5b4f' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#29382f' }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#3e5b4f' }}
               >
                 {item.name}
               </Link>
@@ -59,9 +58,9 @@ export function Header() {
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="ml-2 rounded p-2 transition-colors"
-              style={{ color: 'rgba(255,255,255,0.75)' }}
-              onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#c1a482' }}
-              onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.75)' }}
+              style={{ color: '#3e5b4f' }}
+              onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#29382f' }}
+              onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#3e5b4f' }}
               aria-label="Search"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -71,9 +70,9 @@ export function Header() {
             <Link
               href="/newsletter"
               className="ml-4 rounded px-4 py-1.5 text-sm font-semibold transition-colors"
-              style={{ background: '#c1a482', color: '#343434' }}
-              onMouseEnter={(e) => { (e.target as HTMLElement).style.background = '#b39576' }}
-              onMouseLeave={(e) => { (e.target as HTMLElement).style.background = '#c1a482' }}
+              style={{ background: '#3e5b4f', color: '#ffffff' }}
+              onMouseEnter={(e) => { (e.target as HTMLElement).style.background = '#29382f' }}
+              onMouseLeave={(e) => { (e.target as HTMLElement).style.background = '#3e5b4f' }}
             >
               Subscribe
             </Link>
@@ -86,7 +85,7 @@ export function Header() {
                 setSearchOpen(!searchOpen)
               }}
               className="rounded p-2"
-              style={{ color: 'rgba(255,255,255,0.75)' }}
+              style={{ color: '#3e5b4f' }}
               aria-label="Search"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -96,7 +95,7 @@ export function Header() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="inline-flex items-center justify-center rounded p-2"
-              style={{ color: 'rgba(255,255,255,0.75)' }}
+              style={{ color: '#3e5b4f' }}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {mobileOpen ? (
@@ -112,7 +111,7 @@ export function Header() {
         {/* Search bar (expandable) */}
         <div className={cn('overflow-hidden transition-all duration-200', searchOpen ? 'max-h-16 pb-3' : 'max-h-0')}>
           <form onSubmit={handleSearch} className="relative">
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#756b62' }}>
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#6b6f68' }}>
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
               </svg>
@@ -123,9 +122,9 @@ export function Header() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search all listings..."
               className="w-full rounded-lg py-2 pl-10 pr-4 text-sm"
-              style={{ background: 'rgba(255,255,255,0.12)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }}
-              onFocus={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.5)' }}
-              onBlur={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.2)' }}
+              style={{ background: '#f8f6f1', color: '#29382f', border: '1px solid #d4ddd6' }}
+              onFocus={(e) => { e.target.style.borderColor = '#3e5b4f' }}
+              onBlur={(e) => { e.target.style.borderColor = '#d4ddd6' }}
             />
           </form>
         </div>
@@ -139,7 +138,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="rounded px-3 py-2 text-sm font-medium transition-colors"
-                style={{ color: 'rgba(255,255,255,0.75)' }}
+                style={{ color: '#3e5b4f' }}
               >
                 {item.name}
               </Link>
@@ -148,7 +147,7 @@ export function Header() {
               href="/newsletter"
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded px-4 py-2 text-center text-sm font-semibold"
-              style={{ background: '#c1a482', color: '#343434' }}
+              style={{ background: '#3e5b4f', color: '#ffffff' }}
             >
               Subscribe
             </Link>
