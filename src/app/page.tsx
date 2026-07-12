@@ -88,36 +88,44 @@ export default async function HomePage() {
           <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-16 text-center sm:pb-28 sm:pt-24 lg:px-8">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #eae5da', background: '#f5f1ec' }}>
               <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
-              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c1a482', fontSize: '0.7rem' }}>Research First. Trust Always.</span>
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c1a482', fontSize: '0.7rem' }}>A Global Directory to Navigate Chronic Illness</span>
             </div>
             <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#343434' }}>
-              Evidence-guided chronic
-              <span className="block" style={{ color: '#756b62' }}> illness navigation</span>
+              A structured, evidence-graded,
+              <span className="block" style={{ color: '#756b62' }}> living database</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#756b62' }}>
-              A structured, evidence-graded directory of clinical research, treatments, 
-              supplements, clinics, and providers. Every listing rated by our published 
-              evidence rubric — so you know exactly what the science says.
+              A structured, evidence-graded, living database of clinical research, 
+              treatments, clinics, providers, and supplements.
             </p>
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/research"
-                className="btn-primary"
+                href="/conditions/long-covid"
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
+                style={{ background: '#3e5b4f', color: '#ffffff' }}
               >
-                Browse Research
+                Long COVID
               </Link>
               <Link
-                href="/conditions"
-                className="btn-secondary"
+                href="/conditions/mecfs"
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
+                style={{ background: '#3e5b4f', color: '#ffffff' }}
               >
-                Browse by Condition
+                ME/CFS
               </Link>
               <Link
-                href="/newsletter"
-                className="btn-secondary"
-                style={{ borderColor: '#c1a482', color: '#c1a482' }}
+                href="/conditions/pots"
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
+                style={{ background: '#3e5b4f', color: '#ffffff' }}
               >
-                Subscribe Free
+                POTS
+              </Link>
+              <Link
+                href="/conditions/fibromyalgia"
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
+                style={{ background: '#3e5b4f', color: '#ffffff' }}
+              >
+                Fibromyalgia
               </Link>
             </div>
           </div>
