@@ -87,31 +87,30 @@ export default async function HomePage() {
         <section className="relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #eae5da, #f5f1ec)' }}>
           <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-16 text-center sm:pb-28 sm:pt-24 lg:px-8">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ border: '1px solid #eae5da', background: '#f5f1ec' }}>
-              <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
-              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c1a482', fontSize: '0.7rem' }}>A Global Directory to Navigate Chronic Illness</span>
+              
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#5c4b3a', fontSize: '0.7rem' }}>A Global Directory to Navigate Chronic Illness</span>
             </div>
             <h1 className="font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#343434' }}>
-              A structured, evidence-graded,
-              <span className="block" style={{ color: '#756b62' }}> living database</span>
+              Clinical research, treatments, clinics,
+              <span className="block" style={{ color: '#756b62' }}> providers, and supplements</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: '#756b62' }}>
-              A structured, evidence-graded, living database of clinical research, 
-              treatments, clinics, providers, and supplements.
+              
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/conditions/long-covid"
-                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
-                style={{ background: '#3e5b4f', color: '#ffffff' }}
-              >
-                Long COVID
-              </Link>
               <Link
                 href="/conditions/mecfs"
                 className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
                 style={{ background: '#3e5b4f', color: '#ffffff' }}
               >
                 ME/CFS
+              </Link>
+              <Link
+                href="/conditions/long-covid"
+                className="rounded-lg px-6 py-3 text-sm font-semibold transition-colors"
+                style={{ background: '#3e5b4f', color: '#ffffff' }}
+              >
+                Long COVID
               </Link>
               <Link
                 href="/conditions/pots"
