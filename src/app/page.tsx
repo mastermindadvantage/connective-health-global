@@ -84,33 +84,31 @@ export default async function HomePage() {
 
       <main>
         {/* Hero Section — full-width cinematic */}
-        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden" style={{ background: '#eae5da' }}>
-          {/* Background gradient: warm ivory → soft sage, like dawn mist */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f5f1ec 0%, #d4ddd6 30%, #a8b8a2 60%, #8a9e84 100%)' }} />
-          
-          {/* Soft light beam effect — sweeping across from left */}
-          <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse 120% 60% at 10% 50%, rgba(216,181,106,0.5) 0%, transparent 70%)' }} />
-          <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(ellipse 80% 40% at 30% 40%, rgba(248,246,241,0.8) 0%, transparent 60%)' }} />
-          
-          {/* Subtle connection lines (suggesting global reach) */}
-          <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 20% 30%, rgba(193,164,130,0.4) 0%, transparent 40%), radial-gradient(circle at 60% 70%, rgba(193,164,130,0.3) 0%, transparent 35%), radial-gradient(circle at 80% 20%, rgba(193,164,130,0.2) 0%, transparent 30%)' }} />
+        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+          {/* Background image — cinematic hero shot */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(20,25,20,0.65) 0%, rgba(30,40,30,0.55) 40%, rgba(40,50,40,0.4) 100%)' }} />
           
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:py-32 lg:px-8">
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full px-5 py-2" style={{ background: 'rgba(248,246,241,0.75)', backdropFilter: 'blur(4px)', border: '1px solid rgba(193,164,130,0.3)' }}>
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full px-5 py-2" style={{ background: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(6px)', border: '1px solid rgba(248,246,241,0.2)' }}>
               <span className="h-2 w-2 rounded-full" style={{ background: '#c1a482' }} />
-              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#5c4b3a' }}>A Global Directory to Navigate Chronic Illness</span>
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#f8f6f1' }}>A Global Directory to Navigate Chronic Illness</span>
             </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#29382f' }}>
+            <h1 className="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl" style={{ color: '#ffffff' }}>
               Navigate Complex Chronic Illness
-              <span className="block mt-2" style={{ color: '#3e5b4f' }}> with Confidence</span>
+              <span className="block mt-2" style={{ color: '#e8c87a' }}> with Confidence</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl" style={{ color: '#5c4b3a' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl" style={{ color: 'rgba(248,246,241,0.9)' }}>
               Connecting evidence, experts, care and community — all in one place.
             </p>
 
@@ -158,7 +156,7 @@ export default async function HomePage() {
               <Link
                 href="/about"
                 className="rounded-lg px-8 py-3.5 text-base font-semibold transition-all duration-200 hover:shadow-lg"
-                style={{ background: 'rgba(248,246,241,0.75)', color: '#3e5b4f', border: '1px solid #c1a482' }}
+                style={{ background: 'rgba(255,255,255,0.15)', color: '#f8f6f1', border: '1px solid rgba(248,246,241,0.4)' }}
               >
                 Start Your Journey
               </Link>
