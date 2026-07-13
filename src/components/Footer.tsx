@@ -28,7 +28,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-serif text-lg font-semibold" style={{ color: '#ffffff' }}>
-              Connective Health <span style={{ color: '#c1a482' }}>Global</span>
+              Connective Health <span style={{ color: '#e8c87a' }}>Global</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Evidence. Community. Direction.

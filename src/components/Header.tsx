@@ -36,7 +36,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <span className="font-serif text-lg font-semibold" style={{ color: '#ffffff' }}>
-              Connective Health <span style={{ color: '#c1a482' }}>Global</span>
+              Connective Health <span style={{ color: '#e8c87a' }}>Global</span>
             </span>
           </Link>
 
